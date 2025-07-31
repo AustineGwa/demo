@@ -43,21 +43,5 @@ public class VcfService {
         return value.divide(step, 0, RoundingMode.HALF_UP).multiply(step);
     }
 
-//    /**
-//     * Validate if density is within acceptable range
-//     */
-//    public boolean isValidDensity(BigDecimal density) {
-//        return density != null &&
-//                density.compareTo(new BigDecimal("800")) >= 0 &&
-//                density.compareTo(new BigDecimal("1000")) <= 0;
-//    }
-//
-//    /**
-//     * Validate if temperature is within acceptable range
-//     */
-//    public boolean isValidTemperature(BigDecimal temperature) {
-//        return temperature != null &&
-//                temperature.compareTo(new BigDecimal("-10")) >= 0 &&
-//                temperature.compareTo(new BigDecimal("50")) <= 0;
-//    }
+
 }
