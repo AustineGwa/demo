@@ -18,23 +18,30 @@ public class ApplicationService {
         this.tonnageRepository = tonnageRepository;
     }
 
-    public void calculateTonnage(double density, double volume,double temperature){
+    public OilTonnage calculateTonnage(double density, double volume,double temperature){
         double vcfApplicable = vcfService.getVcf(new BigDecimal(density),new BigDecimal(temperature)).doubleValue();
         var calculateTonnage = (volume * density * vcfApplicable);
-        System.out.println("Calculated tonnage "+calculateTonnage);
 
+        OilTonnage oilTonnage = new OilTonnage();
+        oilTonnage.setVolume(volume);
+        oilTonnage.setDensity(density);
+        oilTonnage.setTemperature(temperature);
+        oilTonnage.setVcf(vcfApplicable);
+        oilTonnage.setTonnage(calculateTonnage);
+        oilTonnage.setCreatedAt(LocalDateTime.now());
         storeResultToDB(volume,density,temperature,vcfApplicable,calculateTonnage);
+        return oilTonnage;
 
     }
 
     private OilTonnage storeResultToDB(double volume, double density, double temprature, double vcf, double tonnage) {
 
         OilTonnage oilTonnage = new OilTonnage();
-        oilTonnage.setVolume(new BigDecimal(volume));
-        oilTonnage.setDensity(new BigDecimal(density));
-        oilTonnage.setTemperature(new BigDecimal(temprature));
-        oilTonnage.setVcf(new BigDecimal(vcf));
-        oilTonnage.setTonnage(new BigDecimal(tonnage));
+        oilTonnage.setVolume(volume);
+        oilTonnage.setDensity(density);
+        oilTonnage.setTemperature(temprature);
+        oilTonnage.setVcf(vcf);
+        oilTonnage.setTonnage(tonnage);
         oilTonnage.setCreatedAt(LocalDateTime.now());
         return tonnageRepository.save(oilTonnage);
 

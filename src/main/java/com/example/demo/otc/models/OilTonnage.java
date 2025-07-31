@@ -1,9 +1,6 @@
 package com.example.demo.otc.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -13,12 +10,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OilTonnage {
-
     private Long id;
-    private BigDecimal volume;
-    private BigDecimal density;
-    private BigDecimal temperature;
-    private BigDecimal vcf;
-    private BigDecimal tonnage;
+    private double volume;
+    private double density;
+    private double temperature;
+    private double vcf;
+    private double tonnage;
     private LocalDateTime createdAt;
 }
